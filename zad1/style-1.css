@@ -1,0 +1,211 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Barlow Thin", serif;
+}
+
+body {
+    background-color: #fdf7f2;
+    margin: 0;
+}
+
+/*header*/
+
+header {
+    background-color: chocolate;
+    padding: 1em 0 2em 0;
+    margin: 0;
+}
+
+header li {
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    background-color: chocolate;
+    border-radius: 0;
+}
+
+header li:hover {
+    box-shadow: none;
+}
+
+header a:hover {
+    color: white;
+}
+
+
+/*page title*/
+
+.title-container {
+    background-color: chocolate;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: auto auto auto;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.header-wave {
+    grid-column: 1 / 3;
+    grid-row: 3 / 4;
+    width: 100%;
+    height: 8em;
+    z-index: 1;
+    fill: #fdf7f2;
+    opacity: 1;
+    transform: scaleX(-1);
+}
+
+.title-container h1 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    text-align: center;
+    font-size: 7em;
+}
+
+.title-container p {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    text-align: center;
+}
+
+.title-image-container {
+    width: 100%;
+    height: 100%;
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    overflow: hidden;
+    display: flex;
+}
+.title-image-container img {
+    max-height: 400px;
+}
+
+.title-image-container img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+
+
+/*main*/
+
+.image-container {
+    width: 16em;
+    height: 16em;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 10%;
+}
+
+p {
+    text-align: justify;
+}
+
+h2, h3, p {
+    line-height: 1.5em;
+    padding: 0 4em;
+}
+
+h2 {
+    text-align: center;
+    font-size: 3em;
+    padding-bottom: 1em;
+    padding-top: 1em;
+}
+
+h3 {
+    margin-top: 1em;
+    text-align: center;
+}
+
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-flow: wrap;
+    gap: 5em;
+    justify-content: center;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+li {
+    border-radius: 10%;
+    background-color: white;
+    padding: 1em;
+    text-align: center;
+    box-shadow: 0.2em 0.2em 1em #e5e5e5;
+}
+
+li:hover {
+    box-shadow: 0.2em 0.2em 1em #d4d4d4;
+}
+
+.pastries-section, .help-section, footer {
+    background-color: #d58e5b;
+}
+
+.pastries-section li {
+    box-shadow: 0.2em 0.2em 1em #7d4115;
+}
+
+.pastries-section li:hover {
+    box-shadow: 0.2em 0.2em 1em #361a09;
+}
+
+.pastries-section, .information-section, .coffee-section, .help-section {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.help-section {
+    background-image: url('./resources/icedcoffee.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+/*footer*/
+
+
+footer {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding: 1em 1em 1em 2em;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+footer a:hover {
+    color: chocolate;
+}
+
+
+.photo-attribution:hover {
+    color: #c66026;
+}
+
+.title-image-package-container {
+    text-align: center;
+}
+
+.title-image-package-container small a:hover {
+    color: #f8cfb8;
+}

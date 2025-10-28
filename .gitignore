@@ -1,0 +1,31 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+/dataSources/
+/dataSources.local.xml
+
+# PhpStorm project files
+**/.idea/
+*.iml
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Cache (if any tools generate it)
+.cache/
+
+# Build output
+/dist/
+/build/
+
+# Ignore PDF files
+*.pdf
+
+# Ignore Word documents
+*.docx

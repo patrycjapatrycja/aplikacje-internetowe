@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./style.css">
+
+<!--    leaflet-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@0.7.7/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@0.7.7/dist/leaflet.js"></script>
+    <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-image/v0.0.4/leaflet-image.js"></script>
+
+
+    <script src="./script.js"></script>
+</head>
+<body>
+    <div id="main-map-container" class="map-container">
+        <div id="map"></div>
+        <div class="button-container">
+            <button id="get-location-button">Get Current Location</button>
+            <button id="save-button">Save Raster Map</button>
+        </div>
+    </div>
+    <div class="map-container">
+        <canvas id="image-canvas"></canvas>
+    </div>
+
+    <div id="puzzle-pieces-start" class="map-container">
+
+    </div>
+
+    <div class="map-container" id="puzzle-pieces-end">
+    </div>
+</body>
+</html>
+
