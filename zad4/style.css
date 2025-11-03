@@ -18,6 +18,10 @@ main {
     margin-bottom: 4em;
 }
 
+#city-input {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
 #input-container button, #input-container input {
     padding: 0.7em;
     border-radius: 10px;
@@ -76,3 +80,33 @@ h1 {
     color: #000000;
 }
 
+#current-weather-container {
+    padding: 2em;
+    border-radius: 10px;
+    flex-shrink: 0;
+    text-align: center;
+    width: fit-content;
+    min-width: 200px;
+    min-height: 200px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    display: none;
+    background: radial-gradient(rgba(198, 198, 198, 0.7), rgba(246, 246, 246, 0.7), #ffffff);
+}
+
+#current-weather-container .degree {
+    font-size: 2em;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 1.7em;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: fit-content;
+    margin: 3em auto 0;
+    display: none;
+}

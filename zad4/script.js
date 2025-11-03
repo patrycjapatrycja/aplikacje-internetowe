@@ -8,27 +8,48 @@ window.onload = function () {
 
     getWeatherButton.addEventListener('click', () => {
         const city = cityInput.value;
-        getWeatherJsonData(city);
+        const cityName = document.getElementById("city-name");
+        let cityCapitalized = city;
+        switch (city.length) {
+            case 0:
+                break;
+            case 1:
+                cityCapitalized = city.toUpperCase();
+                break;
+            default:
+                cityCapitalized = city[0].toUpperCase() + city.slice(1);
+                break;
+        }
+        cityName.textContent = `Pogoda dla ${cityCapitalized}`;
+        getWeatherData(city);
     });
 };
-const getWeatherJsonData = function (city) {
-    const baseUrl =  "https://api.openweathermap.org/data/2.5/forecast?units=metric&lang=pl";
-    const apiKey = "7ded80d91f2b280ec979100cc8bbba94";
-    const url = baseUrl + `&appid=${apiKey}&q=${city.toLowerCase()}`;
 
+
+const getWeatherData = function (city) {
+    const apiKey = "7218deaeb0ffa0794e5e7fa035dc779d";
+    const baseJsonUrl =  "https://api.openweathermap.org/data/2.5/forecast?units=metric&lang=pl";
+    const urlJson = baseJsonUrl + `&appid=${apiKey}&q=${city.toLowerCase()}`;
+
+    const baseXmlUrl = "https://api.openweathermap.org/data/2.5/weather?";
+    const urlXml = baseXmlUrl + `appid=${apiKey}&q=${city.toLowerCase()}&units=metric&mode=xml&lang=pl`;
+
+    getWeatherJsonData(urlJson);
+    getWeatherXmlData(urlXml);
+}
+const getWeatherJsonData = function (url) {
     const weatherResultsContainer = document.getElementById("weather-results-container");
     weatherResultsContainer.innerHTML = ``;
 
     fetch(url)
         .then((response) => {
+            console.log(response);
             return response.json();
         })
         .then((data) => {
             const weatherData = data.list;
             handleWeatherData(weatherData);
 
-            const cityName = document.getElementById("city-name");
-            cityName.textContent = `Pogoda dla ${city}`;
         })
         .catch((error) => {
            console.log(`fetch error: ${error}`);
@@ -36,10 +57,59 @@ const getWeatherJsonData = function (city) {
 
 };
 
+const getWeatherXmlData = function (url) {
+    const iconBaseUrl = "https://openweathermap.org/img/wn/";
+    const currentWeatherContainer = document.getElementById("current-weather-container");
+    const outerContainer = document.getElementsByClassName("container")[0];
+    currentWeatherContainer.innerHTML = ``;
+    let request = new XMLHttpRequest();
+    request.open("GET", url, true);
+
+    request.addEventListener("load", function(e) {
+        console.log("XML: \n" + request.responseText);
+        try {
+            const response = request.responseXML.querySelector("current");
+            const temperature = response.querySelector("temperature").getAttribute("value");
+            const date = response.querySelector("lastupdate").getAttribute("value").substring(0, 10);
+            const day = date.substring(8,10);
+            const month = date.substring(5,7);
+            const humidity = response.querySelector("humidity").getAttribute("value");
+            const humidityUnit = response.querySelector("humidity").getAttribute("unit");
+            const weather = response.querySelector("weather").getAttribute("value");
+
+            const icon = response.querySelector("weather").getAttribute("icon");
+            const iconUrl = iconBaseUrl + icon + ".png";
+
+            currentWeatherContainer.innerHTML = `
+            <p class="date">${day}.${month}</p>
+            <p class="degree">${temperature} &deg;C</p>
+            <div>
+                <img src="${iconUrl}" alt="">
+            </div>
+            <p>${weather}</p>
+            </div>
+            <p>wilgotność: ${humidity}${humidityUnit}</p>
+            `;
+            currentWeatherContainer.style.display = "flex";
+            outerContainer.style.display = "flex";
+        } catch (e) {
+            currentWeatherContainer.style.display = "none";
+            outerContainer.style.display = "none";
+            console.log("xml error: " + e);
+        }
+    });
+
+    request.addEventListener('error', (error) => {
+        console.log("error requesting xml: " + error);
+        currentWeatherContainer.style.display = "none";
+    });
+
+    request.send();
+};
+
 
 const handleWeatherData = function (data) {
     const weatherResultsContainer = document.getElementById("weather-results-container");
-
 
     var dayWeatherContainer;
     var row;
