@@ -1,0 +1,3 @@
+[submodule "zad5/custom-php-framework"]
+    path = zad5/custom-php-framework
+    url = https://github.com/ideaspot-pl/custom-php-framework.git
